@@ -1,20 +1,20 @@
 CREATE TABLE Artist (
   id            integer PRIMARY KEY AUTOINCREMENT,
   firstName     varchar(64) NOT NULL,
-  lastName      varchar(64) NOT NULL,
+  lastName      varchar(64) NOT NULL
 );
 
 CREATE TABLE Venue (
   id            integer PRIMARY KEY AUTOINCREMENT,
   location      varchar(64) NOT NULL,
-  size          integer NOT NULL,
+  size          integer NOT NULL
 );
 
 CREATE TABLE Event (
   id            integer PRIMARY KEY AUTOINCREMENT,
   date          date NOT NULL,
   venueID       integer NOT NULL,
-  FOREIGN KEY (venueID) REFERENCES Venue(id),
+  FOREIGN KEY (venueID) REFERENCES Venue(id)
 );
 
 CREATE TABLE ArtistToEvent (
@@ -22,17 +22,17 @@ CREATE TABLE ArtistToEvent (
   artistID      integer NOT NULL,
   eventID       integer NOT NULL,
   FOREIGN KEY (artistID) REFERENCES Artist(id),
-  FOREIGN KEY (eventID) REFERENCES Event(id),
+  FOREIGN KEY (eventID) REFERENCES Event(id)
 );
 
 CREATE TABLE Genre (
   id            integer PRIMARY KEY AUTOINCREMENT,
-  name          varchar(64) NOT NULL,
+  name          varchar(64) NOT NULL
 );
 
 CREATE TABLE Song (
   id            integer PRIMARY KEY AUTOINCREMENT,
-  name          varchar(64) NOT NULL,
+  name          varchar(64) NOT NULL
 );
 
 CREATE TABLE SongToArtist (
@@ -40,11 +40,11 @@ CREATE TABLE SongToArtist (
   artistID      integer NOT NULL,
   songID       integer NOT NULL,
   FOREIGN KEY (artistID) REFERENCES Artist(id),
-  FOREIGN KEY (songID) REFERENCES Song(id),
+  FOREIGN KEY (songID) REFERENCES Song(id)
 );
 
 CREATE TABLE Album (
   id            integer PRIMARY KEY AUTOINCREMENT,
   name          varchar(64) NOT NULL,
-  year          year NOT NULL,
+  year          year NOT NULL
 );
