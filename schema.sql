@@ -12,7 +12,7 @@ CREATE TABLE Venue (
 
 CREATE TABLE Event (
   id            integer PRIMARY KEY AUTOINCREMENT,
-  dateTime      datetime NOT NULL,
+  date          date NOT NULL,
   venueID       integer NOT NULL,
   FOREIGN KEY (venueID) REFERENCES Venue(id),
 );
