@@ -25,6 +25,12 @@ CREATE TABLE ArtistToEvent (
   FOREIGN KEY (eventID) REFERENCES Event(id)
 );
 
+CREATE TABLE Album (
+  id            integer PRIMARY KEY AUTOINCREMENT,
+  name          varchar(64) NOT NULL,
+  year          year NOT NULL
+);
+
 CREATE TABLE Genre (
   id            integer PRIMARY KEY AUTOINCREMENT,
   name          varchar(64) NOT NULL
@@ -32,7 +38,11 @@ CREATE TABLE Genre (
 
 CREATE TABLE Song (
   id            integer PRIMARY KEY AUTOINCREMENT,
-  name          varchar(64) NOT NULL
+  name          varchar(64) NOT NULL,
+  albumID       integer NOT NULL,
+  genreID       integer NOT NULL,
+  FOREIGN KEY (albumID) REFERENCES Album(id),
+  FOREIGN KEY (genreID) REFERENCES Genre(id)
 );
 
 CREATE TABLE SongToArtist (
@@ -43,8 +53,3 @@ CREATE TABLE SongToArtist (
   FOREIGN KEY (songID) REFERENCES Song(id)
 );
 
-CREATE TABLE Album (
-  id            integer PRIMARY KEY AUTOINCREMENT,
-  name          varchar(64) NOT NULL,
-  year          year NOT NULL
-);
